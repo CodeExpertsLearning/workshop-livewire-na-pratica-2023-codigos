@@ -90,7 +90,7 @@
                       cancelButtonText: `Cancelar`,
                   }).then(result => {
                       if(result.isConfirmed) {
-                          Livewire.emit('productDelete', event.detail.id)
+                          Livewire.emit('productDelete:' + event.detail.id, event.detail.id)
                           return;
                       }
                   })

@@ -9,8 +9,6 @@ class ProductDelete extends Component
 {
     public $product;
 
-    protected $listeners = ['productDelete'];
-
     public function mount($product)
     {
         $this->product = $product;
@@ -28,6 +26,14 @@ class ProductDelete extends Component
            $this->emit('productDeleted');
         }
     }
+
+    protected function getListeners()
+    {
+        return [
+          'productDelete:' . $this->product => 'productDelete'
+        ];
+    }
+
     public function render()
     {
         return view('livewire.admin.products.product-delete');

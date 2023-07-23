@@ -75,11 +75,11 @@
                             <label class="w-full mb-4">Categorias</label>
 
                             <div class="px-5 grid grid-cols-3">
-                                @foreach($allCategories as $key => $category)
+                                @foreach($allCategories as $categoryId => $category)
                                     <div >
                                         <input  type="checkbox"
-                                                wire:model="categories.{{$key + 1}}"
-                                                value="1"> {{$category['name']}}
+                                                wire:model="categories.{{$categoryId}}"
+                                                value="1"> {{$category}}
                                     </div>
                                 @endforeach
                             </div>

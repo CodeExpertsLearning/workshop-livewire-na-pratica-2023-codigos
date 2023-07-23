@@ -30,7 +30,8 @@ class ProductForm extends Component
         $this->product = $product;
         $this->categories = $this->product->categories->pluck('id')->toArray();
         $this->categories = array_fill_keys($this->categories, 1);
-        $this->allCategories = $category->all(['id', 'name'])->toArray();
+        $this->allCategories = $category->pluck('name', 'id')->toArray();
+
     }
 
     public function syncProduct()
