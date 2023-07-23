@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Sluggable\{HasSlug, SlugOptions};
+use Spatie\Sluggable\{HasSlug,SlugOptions};
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-
-class Product extends Model
+class Category extends Model
 {
     use HasFactory, HasSlug;
 
@@ -24,8 +23,8 @@ class Product extends Model
     /**
      * Relations
      */
-    public function categories(): BelongsToMany
+    public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Product::class);
     }
 }

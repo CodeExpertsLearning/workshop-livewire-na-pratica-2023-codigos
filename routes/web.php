@@ -24,8 +24,8 @@ Route::middleware('auth')
     ->group(function() {
 
     Route::get('/products', ProductList::class)->name('product.index');
-    Route::get('/products/create', ProductCreate::class)->name('product.create');
-    Route::get('/products/{product}/edit', ProductEdit::class)->name('product.edit');
+    Route::get('/products/create', Form\ProductForm::class)->name('product.create');
+    Route::get('/products/{product}/edit', Form\ProductForm::class)->name('product.edit');
 });
 
 //Breeze Routes...

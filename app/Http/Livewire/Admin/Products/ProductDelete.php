@@ -9,18 +9,25 @@ class ProductDelete extends Component
 {
     public $product;
 
-    public function mount(Product $product)
+    protected $listeners = ['productDelete'];
+
+    public function mount($product)
     {
         $this->product = $product;
     }
 
-    public function productDelete()
+    public function productConfirmDelete()
     {
-        $this->product->delete();
-
-        $this->emit('productDeleted');
+        $this->dispatchBrowserEvent('sweet:open', ['id' => $this->product]);
     }
 
+    public function productDelete($product)
+    {
+        if($product = Product::find($product)) {
+           $product->delete();
+           $this->emit('productDeleted');
+        }
+    }
     public function render()
     {
         return view('livewire.admin.products.product-delete');
